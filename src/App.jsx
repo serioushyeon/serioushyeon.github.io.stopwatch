@@ -83,7 +83,7 @@ const App = () => {
             marginRight: "10px",
             backgroundColor: backgroundColor, // 동적으로 배경색 설정
             fontSize: "48px",
-            width: "30%",
+            width: "40%",
           }}
         >
           {running ? "일시정지" : "시작"}
