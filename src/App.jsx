@@ -48,6 +48,9 @@ const App = () => {
     textAlign: "right",
   };
 
+  // 배경색을 running 상태에 따라 변경
+  const backgroundColor = running ? "red" : "LightGreen";
+
   return (
     <div style={{ textAlign: "center" }}>
       <div
@@ -68,7 +71,7 @@ const App = () => {
           onClick={() => setRunning(!running)}
           style={{
             marginRight: "10px",
-            backgroundColor: "LightGreen",
+            backgroundColor: backgroundColor, // 동적으로 배경색 설정
             fontSize: "24px",
           }}
         >
