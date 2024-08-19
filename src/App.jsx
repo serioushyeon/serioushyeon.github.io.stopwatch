@@ -17,7 +17,7 @@ const App = () => {
   }, [running]);
 
   const handleKeyPress = (event) => {
-    if (event.key === " ") {
+    if (event.key === " " || event.key === 32 || event.key === "Spacebar") {
       setRunning(!running);
     } else if (event.key === "Escape") {
       setRunning(false);
