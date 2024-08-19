@@ -18,7 +18,7 @@ const App = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Shift") {
-      setRunning(!running);
+      handleStartClick(); // Shift 키로 타이머 시작/정지 및 초기화
     } else if (event.key === "Escape") {
       setRunning(false);
       setTime(0);
@@ -32,20 +32,30 @@ const App = () => {
     };
   }, [running]);
 
-  const numberStyle = {
-    fontSize: "200px",
-    fontFamily: "Digit",
-    width: "2ch", // 숫자 하나의 고정된 너비
-    display: "inline-block",
-    textAlign: "right",
+  // 타이머 시작 및 초기화 핸들러
+  const handleStartClick = () => {
+    if (!running) {
+      setTime(0); // 타이머를 초기화
+    }
+    setRunning(!running); // 타이머 시작 또는 정지
   };
 
-  const millisecondStyle = {
-    fontSize: "160px",
+  const numberStyle = {
+    fontSize: "600px",
     fontFamily: "Digit",
     width: "2ch", // 밀리초 숫자의 고정된 너비
     display: "inline-block",
-    textAlign: "right",
+    verticalAlign: "baseline", // 수직 정렬 조정
+    lineHeight: "1", // 라인 높이 조정
+  };
+
+  const millisecondStyle = {
+    fontSize: "400px",
+    fontFamily: "Digit",
+    display: "inline-block",
+    width: "2ch", // 밀리초 숫자의 고정된 너비
+    verticalAlign: "baseline", // 수직 정렬 조정
+    lineHeight: "1", // 라인 높이 조정
   };
 
   // 배경색을 running 상태에 따라 변경
@@ -61,34 +71,22 @@ const App = () => {
         <span style={numberStyle}>
           {("0" + Math.floor((time / 1000) % 60)).slice(-2)}
         </span>
-        <span style={{ fontSize: "160px", verticalAlign: "top" }}>.</span>
+        <span style={{ fontSize: "160px" }}>.</span>
         <span style={millisecondStyle}>
           {("0" + ((time / 10) % 100)).slice(-2)}
         </span>
       </div>
       <div>
         <button
-          onClick={() => setRunning(!running)}
+          onClick={handleStartClick} // 클릭 시 타이머 시작/정지 및 초기화
           style={{
             marginRight: "10px",
             backgroundColor: backgroundColor, // 동적으로 배경색 설정
-            fontSize: "24px",
+            fontSize: "48px",
+            width: "30%",
           }}
         >
           {running ? "일시정지" : "시작"}
-        </button>
-        <button
-          style={{
-            marginRight: "10px",
-            backgroundColor: "Orange",
-            fontSize: "24px",
-          }}
-          onClick={() => {
-            setRunning(false);
-            setTime(0);
-          }}
-        >
-          재설정
         </button>
       </div>
     </div>
