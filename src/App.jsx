@@ -50,7 +50,7 @@ const App = () => {
   };
 
   const millisecondStyle = {
-    fontSize: "400px",
+    fontSize: "600px",
     fontFamily: "Digit",
     display: "inline-block",
     width: "2ch", // 밀리초 숫자의 고정된 너비
